@@ -1,0 +1,830 @@
+[
+  {
+    "model": "elogistic.product",
+    "pk": 1,
+    "fields": {
+      "name": "iPhone 15",
+      "model": "A3090",
+      "market_release_date": "2023-09-22"
+    }
+  },
+  {
+    "model": "elogistic.product",
+    "pk": 2,
+    "fields": {
+      "name": "MacBook Pro",
+      "model": "M3",
+      "market_release_date": "2023-10-01"
+    }
+  },
+  {
+    "model": "elogistic.product",
+    "pk": 3,
+    "fields": {
+      "name": "Mi TV",
+      "model": "TV Pro",
+      "market_release_date": "2023-01-15"
+    }
+  },
+  {
+    "model": "elogistic.product",
+    "pk": 4,
+    "fields": {
+      "name": "Redmi Note 13",
+      "model": "Note 13",
+      "market_release_date": "2023-03-10"
+    }
+  },
+  {
+    "model": "elogistic.product",
+    "pk": 5,
+    "fields": {
+      "name": "PlayStation 5",
+      "model": "CFI-1215A",
+      "market_release_date": "2020-11-12"
+    }
+  },
+  {
+    "model": "elogistic.product",
+    "pk": 6,
+    "fields": {
+      "name": "Bravia TV",
+      "model": "XR-65",
+      "market_release_date": "2022-04-20"
+    }
+  },
+  {
+    "model": "elogistic.product",
+    "pk": 7,
+    "fields": {
+      "name": "Умная розетка",
+      "model": "HS-100",
+      "market_release_date": "2022-06-01"
+    }
+  },
+  {
+    "model": "elogistic.product",
+    "pk": 8,
+    "fields": {
+      "name": "Датчик движения",
+      "model": "MS-01",
+      "market_release_date": "2023-02-14"
+    }
+  },
+  {
+    "model": "elogistic.product",
+    "pk": 9,
+    "fields": {
+      "name": "Промышленный вентилятор",
+      "model": "PF-5000",
+      "market_release_date": "2021-08-30"
+    }
+  },
+  {
+    "model": "elogistic.product",
+    "pk": 10,
+    "fields": {
+      "name": "Настольный вентилятор",
+      "model": "DF-200",
+      "market_release_date": "2022-05-05"
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 101,
+    "fields": {
+      "type": "factory",
+      "name": "Apple Inc.",
+      "email": "contact@apple.com",
+      "country": "USA",
+      "city": "Cupertino",
+      "street": "Infinite Loop",
+      "house_number": "1",
+      "supplier": null,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [1, 2]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 102,
+    "fields": {
+      "type": "factory",
+      "name": "Xiaomi Corp.",
+      "email": "support@xiaomi.com",
+      "country": "China",
+      "city": "Beijing",
+      "street": "Qinghe Middle Street",
+      "house_number": "68",
+      "supplier": null,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 103,
+    "fields": {
+      "type": "factory",
+      "name": "Sony Group",
+      "email": "info@sony.com",
+      "country": "Japan",
+      "city": "Tokyo",
+      "street": "Konan",
+      "house_number": "1-7-1",
+      "supplier": null,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [5, 6]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 104,
+    "fields": {
+      "type": "factory",
+      "name": "Умный дом",
+      "email": "hello@smarthome.ru",
+      "country": "Russia",
+      "city": "Moscow",
+      "street": "Ленинская слобода",
+      "house_number": "19",
+      "supplier": null,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [7, 8]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 105,
+    "fields": {
+      "type": "factory",
+      "name": "ВентиляторПром",
+      "email": "sales@fanprom.cn",
+      "country": "China",
+      "city": "Shenzhen",
+      "street": "Huaqiangbei",
+      "house_number": "3002",
+      "supplier": null,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [9, 10]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 201,
+    "fields": {
+      "type": "individual",
+      "name": "Distributor Europe",
+      "email": "info@dist-eu.de",
+      "country": "Germany",
+      "city": "Berlin",
+      "street": "Friedrichstrasse",
+      "house_number": "123",
+      "supplier": 101,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [1, 2, 5, 6]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 202,
+    "fields": {
+      "type": "individual",
+      "name": "Distributor Russia",
+      "email": "info@dist-ru.ru",
+      "country": "Russia",
+      "city": "Moscow",
+      "street": "Тверская",
+      "house_number": "15",
+      "supplier": 102,
+      "debt": 367456353,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 203,
+    "fields": {
+      "type": "individual",
+      "name": "Distributor USA",
+      "email": "info@dist-us.com",
+      "country": "USA",
+      "city": "New York",
+      "street": "5th Avenue",
+      "house_number": "200",
+      "supplier": 101,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [1, 2]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 204,
+    "fields": {
+      "type": "individual",
+      "name": "Distributor China",
+      "email": "info@dist-cn.cn",
+      "country": "China",
+      "city": "Beijing",
+      "street": "Wangfujing",
+      "house_number": "88",
+      "supplier": 102,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 205,
+    "fields": {
+      "type": "individual",
+      "name": "Distributor Japan",
+      "email": "info@dist-jp.jp",
+      "country": "Japan",
+      "city": "Tokyo",
+      "street": "Ginza",
+      "house_number": "6-9",
+      "supplier": 103,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [5, 6]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 301,
+    "fields": {
+      "type": "individual",
+      "name": "Moscow Distributor",
+      "email": "moscow@dist-ru.ru",
+      "country": "Russia",
+      "city": "Moscow",
+      "street": "Новый Арбат",
+      "house_number": "10",
+      "supplier": 202,
+      "debt": 53452344223,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 302,
+    "fields": {
+      "type": "individual",
+      "name": "SPb Distributor",
+      "email": "spb@dist-ru.ru",
+      "country": "Russia",
+      "city": "St Petersburg",
+      "street": "Невский пр.",
+      "house_number": "50",
+      "supplier": 202,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 303,
+    "fields": {
+      "type": "individual",
+      "name": "Kazan Distributor",
+      "email": "kazan@dist-ru.ru",
+      "country": "Russia",
+      "city": "Kazan",
+      "street": "Баумана",
+      "house_number": "20",
+      "supplier": 202,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 304,
+    "fields": {
+      "type": "individual",
+      "name": "New York Distributor",
+      "email": "ny@dist-us.com",
+      "country": "USA",
+      "city": "New York",
+      "street": "Broadway",
+      "house_number": "100",
+      "supplier": 203,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [1, 2]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 305,
+    "fields": {
+      "type": "individual",
+      "name": "Los Angeles Distributor",
+      "email": "la@dist-us.com",
+      "country": "USA",
+      "city": "Los Angeles",
+      "street": "Hollywood Blvd",
+      "house_number": "200",
+      "supplier": 203,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [1, 2]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 306,
+    "fields": {
+      "type": "individual",
+      "name": "Berlin Distributor",
+      "email": "berlin@dist-eu.de",
+      "country": "Germany",
+      "city": "Berlin",
+      "street": "Kurfürstendamm",
+      "house_number": "45",
+      "supplier": 201,
+      "debt": 234451340,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [1, 2, 5, 6]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 307,
+    "fields": {
+      "type": "individual",
+      "name": "Paris Distributor",
+      "email": "paris@dist-eu.de",
+      "country": "France",
+      "city": "Paris",
+      "street": "Champs-Élysées",
+      "house_number": "78",
+      "supplier": 201,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [1, 2, 5, 6]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 308,
+    "fields": {
+      "type": "individual",
+      "name": "Rome Distributor",
+      "email": "rome@dist-eu.de",
+      "country": "Italy",
+      "city": "Rome",
+      "street": "Via del Corso",
+      "house_number": "12",
+      "supplier": 201,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [1, 2, 5, 6]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 309,
+    "fields": {
+      "type": "individual",
+      "name": "Beijing Distributor",
+      "email": "beijing@dist-cn.cn",
+      "country": "China",
+      "city": "Beijing",
+      "street": "Chang'an Avenue",
+      "house_number": "1",
+      "supplier": 204,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 310,
+    "fields": {
+      "type": "individual",
+      "name": "Shanghai Distributor",
+      "email": "shanghai@dist-cn.cn",
+      "country": "China",
+      "city": "Shanghai",
+      "street": "Nanjing Road",
+      "house_number": "888",
+      "supplier": 204,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 311,
+    "fields": {
+      "type": "individual",
+      "name": "Tokyo Distributor",
+      "email": "tokyo@dist-jp.jp",
+      "country": "Japan",
+      "city": "Tokyo",
+      "street": "Shibuya",
+      "house_number": "2-1",
+      "supplier": 205,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [5, 6]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 312,
+    "fields": {
+      "type": "individual",
+      "name": "Osaka Distributor",
+      "email": "osaka@dist-jp.jp",
+      "country": "Japan",
+      "city": "Osaka",
+      "street": "Shinsaibashi",
+      "house_number": "3-3",
+      "supplier": 205,
+      "debt": 100000000,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [5, 6]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 401,
+    "fields": {
+      "type": "retail",
+      "name": "Magnit Moscow",
+      "email": "magnit.msk@magnit.ru",
+      "country": "Russia",
+      "city": "Moscow",
+      "street": "Ленинградский пр.",
+      "house_number": "30",
+      "supplier": 301,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 402,
+    "fields": {
+      "type": "retail",
+      "name": "Magnit SPb",
+      "email": "magnit.spb@magnit.ru",
+      "country": "Russia",
+      "city": "St Petersburg",
+      "street": "Садовая ул.",
+      "house_number": "15",
+      "supplier": 302,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 403,
+    "fields": {
+      "type": "retail",
+      "name": "Magnit Kazan",
+      "email": "magnit.kzn@magnit.ru",
+      "country": "Russia",
+      "city": "Kazan",
+      "street": "Кремлёвская",
+      "house_number": "5",
+      "supplier": 303,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 404,
+    "fields": {
+      "type": "retail",
+      "name": "X5 Retail Moscow",
+      "email": "x5.msk@x5.ru",
+      "country": "Russia",
+      "city": "Moscow",
+      "street": "Профсоюзная",
+      "house_number": "56",
+      "supplier": 301,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 405,
+    "fields": {
+      "type": "retail",
+      "name": "X5 Retail SPb",
+      "email": "x5.spb@x5.ru",
+      "country": "Russia",
+      "city": "St Petersburg",
+      "street": "Лиговский пр.",
+      "house_number": "87",
+      "supplier": 302,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 406,
+    "fields": {
+      "type": "retail",
+      "name": "MediaMarkt Berlin",
+      "email": "mm.berlin@mediamarkt.de",
+      "country": "Germany",
+      "city": "Berlin",
+      "street": "Tauentzienstrasse",
+      "house_number": "9",
+      "supplier": 306,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [1, 2, 5, 6]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 407,
+    "fields": {
+      "type": "retail",
+      "name": "FNAC Paris",
+      "email": "fnac.paris@fnac.fr",
+      "country": "France",
+      "city": "Paris",
+      "street": "Rue de Rivoli",
+      "house_number": "100",
+      "supplier": 307,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [1, 2, 5, 6]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 408,
+    "fields": {
+      "type": "retail",
+      "name": "Euronics Rome",
+      "email": "euronics.roma@euronics.it",
+      "country": "Italy",
+      "city": "Rome",
+      "street": "Via Nazionale",
+      "house_number": "22",
+      "supplier": 308,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [1, 2, 5, 6]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 409,
+    "fields": {
+      "type": "retail",
+      "name": "Best Buy NYC",
+      "email": "bestbuy.ny@bestbuy.com",
+      "country": "USA",
+      "city": "New York",
+      "street": "Union Square",
+      "house_number": "10",
+      "supplier": 304,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [1, 2]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 410,
+    "fields": {
+      "type": "retail",
+      "name": "Best Buy LA",
+      "email": "bestbuy.la@bestbuy.com",
+      "country": "USA",
+      "city": "Los Angeles",
+      "street": "Westwood Blvd",
+      "house_number": "10800",
+      "supplier": 305,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [1, 2]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 411,
+    "fields": {
+      "type": "retail",
+      "name": "Suning Beijing",
+      "email": "suning.bj@suning.cn",
+      "country": "China",
+      "city": "Beijing",
+      "street": "Fuxing Road",
+      "house_number": "12",
+      "supplier": 309,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 412,
+    "fields": {
+      "type": "retail",
+      "name": "Suning Shanghai",
+      "email": "suning.sh@suning.cn",
+      "country": "China",
+      "city": "Shanghai",
+      "street": "Huaihai Road",
+      "house_number": "300",
+      "supplier": 310,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [3, 4]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 413,
+    "fields": {
+      "type": "retail",
+      "name": "Bic Camera Tokyo",
+      "email": "bic.tokyo@biccamera.jp",
+      "country": "Japan",
+      "city": "Tokyo",
+      "street": "Yurakucho",
+      "house_number": "1-1",
+      "supplier": 311,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [5, 6]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 414,
+    "fields": {
+      "type": "retail",
+      "name": "Bic Camera Osaka",
+      "email": "bic.osaka@biccamera.jp",
+      "country": "Japan",
+      "city": "Osaka",
+      "street": "Umeda",
+      "house_number": "2-2",
+      "supplier": 312,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [5, 6]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 501,
+    "fields": {
+      "type": "individual",
+      "name": "Умные технологии",
+      "email": "info@smarttech.ru",
+      "country": "Russia",
+      "city": "Moscow",
+      "street": "1-я Тверская-Ямская",
+      "house_number": "2",
+      "supplier": 104,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [7, 8]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 502,
+    "fields": {
+      "type": "retail",
+      "name": "Домотехника",
+      "email": "shop@domoteh.ru",
+      "country": "Russia",
+      "city": "Moscow",
+      "street": "Ленинградское шоссе",
+      "house_number": "10",
+      "supplier": 501,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [7, 8]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 503,
+    "fields": {
+      "type": "individual",
+      "name": "Fan Distributor",
+      "email": "fan@fan.cn",
+      "country": "China",
+      "city": "Shenzhen",
+      "street": "Nanshan",
+      "house_number": "88",
+      "supplier": 105,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [9, 10]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 504,
+    "fields": {
+      "type": "individual",
+      "name": "РусВентилятор",
+      "email": "info@rusfan.ru",
+      "country": "Russia",
+      "city": "Moscow",
+      "street": "Варшавское шоссе",
+      "house_number": "150",
+      "supplier": 503,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [9, 10]
+    }
+  },
+  {
+    "model": "elogistic.networknode",
+    "pk": 505,
+    "fields": {
+      "type": "retail",
+      "name": "Климат Про",
+      "email": "shop@klimatpro.ru",
+      "country": "Russia",
+      "city": "Moscow",
+      "street": "Профсоюзная",
+      "house_number": "120",
+      "supplier": 504,
+      "debt": 0,
+      "currency": "RUB",
+      "created_at": "2023-01-01T00:00:00Z",
+      "products": [9, 10]
+    }
+  }
+]

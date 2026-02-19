@@ -43,6 +43,7 @@ class NetworkNodeAdmin(admin.ModelAdmin):
     search_fields = ('name', 'city')
     actions = ['clear_debt']
     readonly_fields = ('created_at',)  # created_at не редактируется
+    filter_horizontal = ('products',)
 
     fieldsets = (
         (None, {
@@ -62,7 +63,7 @@ class NetworkNodeAdmin(admin.ModelAdmin):
     def supplier_link(self, obj):
         """Возвращает HTML-ссылку на страницу поставщика."""
         if obj.supplier:
-            url = reverse('admin:network_networknode_change', args=[obj.supplier.id])
+            url = reverse('admin:elogistic_networknode_change', args=[obj.supplier.id])
             return format_html('<a href="{}">{}</a>', url, obj.supplier.name)
         return "-"
     supplier_link.short_description = "Поставщик"

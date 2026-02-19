@@ -38,7 +38,7 @@ class NetworkNode(models.Model):
         verbose_name="Поставщик"
     )
 
-    debt = models.IntegerField(
+    debt = models.BigIntegerField(
         default=0,
         validators=[MinValueValidator(0)],
         verbose_name="Задолженность (в копейках)"
