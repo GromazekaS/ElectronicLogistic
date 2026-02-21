@@ -7,46 +7,33 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class RublesField(serializers.Field):
+    """Поле для ввода/вывода рублей, хранящее значение в копейках."""
+    def to_representation(self, value):
+        # value приходит из модели (в копейках)
+        return value / 100.0
+
+    def to_internal_value(self, data):
+        from decimal import Decimal, ROUND_HALF_UP
+        try:
+            # Преобразуем в Decimal для точности
+            rub = Decimal(str(data))  # str важно, чтобы не терять точность
+            kopecks = (rub * 100).quantize(Decimal('1'), rounding=ROUND_HALF_UP)
+            return int(kopecks)
+        except:
+            raise serializers.ValidationError('Должно быть число.')
+
 class NetworkNodeSerializer(serializers.ModelSerializer):
-    # Для вывода задолженности в рублях (строка с двумя знаками)
-    debt = serializers.SerializerMethodField()
-    # Для записи продуктов используем список id, для чтения добавляем детальную информацию
+    debt = RublesField(required=False)
     products = serializers.PrimaryKeyRelatedField(many=True, queryset=Product.objects.all())
     products_detail = ProductSerializer(source='products', many=True, read_only=True)
 
     class Meta:
         model = NetworkNode
         fields = '__all__'
-        read_only_fields = ('created_at',)  # поле created_at не редактируется
-
-    def get_debt(self, obj):
-        """Преобразует копейки в рубли с двумя знаками."""
-        return f"{obj.debt / 100:.2f}"
-
-    def to_internal_value(self, data):
-        """
-        Преобразует входные данные перед валидацией.
-        Перехватываем поле 'debt' и переводим рубли в копейки.
-        """
-        # Создаём копию, так как data может быть неизменяемым (например, QueryDict)
-        data_copy = data.copy() if hasattr(data, 'copy') else dict(data)
-
-        debt_rub = data_copy.get('debt')
-        if debt_rub is not None:
-            try:
-                # Преобразуем в число с плавающей точкой, затем в копейки
-                # Предполагаем, что может прийти как строка, так и число
-                rub = float(debt_rub)
-                kopecks = int(round(rub * 100))  # round для избежания ошибок округления
-                data_copy['debt'] = kopecks
-            except (ValueError, TypeError):
-                raise serializers.ValidationError({'debt': 'Неверный формат задолженности. Ожидается число.'})
-
-        return super().to_internal_value(data_copy)
+        read_only_fields = ('created_at',)
 
     def update(self, instance, validated_data):
-        """
-        Запрещаем изменение поля debt при обновлении.
-        """
-        validated_data.pop('debt', None)  # удаляем, если вдруг пришло
+        # Запрещаем обновление поля debt
+        validated_data.pop('debt', None)
         return super().update(instance, validated_data)
