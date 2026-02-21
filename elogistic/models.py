@@ -38,7 +38,7 @@ class NetworkNode(models.Model):
         verbose_name="Поставщик"
     )
 
-    debt = models.BigIntegerField(
+    debt = models.BigIntegerField(  # в поле IntegerField максимальное значение только 21 474 836.47р. может не хватить
         default=0,
         validators=[MinValueValidator(0)],
         verbose_name="Задолженность (в копейках)"
@@ -65,7 +65,7 @@ class NetworkNode(models.Model):
             return "distributor"
         return "retail"
 
-    def debt_in_rubles(self):
-        """Вспомогательный метод для отображения задолженности в рублях (для админки и API)."""
-        rubles = self.debt / 100.0
-        return f"{rubles:.2f}".replace('.', ',')  # или просто число
+    # def debt_in_rubles(self):
+    #     """Вспомогательный метод для отображения задолженности в рублях (для админки и API)."""
+    #     rubles = self.debt / 100.0
+    #     return f"{rubles:.2f}".replace('.', ',')  # или просто число
