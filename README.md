@@ -1,5 +1,6 @@
 Electronics Distribution Network
-Веб-приложение для управления дистрибьюторской сетью электроники с REST API и административной панелью. Реализована иерархическая структура звеньев (заводы, розничные сети, ИП), учёт продуктов и задолженности. Проект выполнен в рамках тестового задания и демонстрирует профессиональный подход к разработке на Django + DRF.
+Веб-приложение для управления дистрибьюторской сетью электроники с REST API и административной панелью. 
+Реализована иерархическая структура звеньев (заводы, розничные сети, ИП), учёт продуктов и задолженности. Проект выполнен в рамках тестового задания №1.
 
 🚀 Технологический стек
 Backend: Python 3.12, Django 5.2, Django REST Framework 3.15
@@ -11,57 +12,73 @@ Backend: Python 3.12, Django 5.2, Django REST Framework 3.15
 Инструменты качества: flake8, coverage (покрытие тестами ~98%)
 
 📦 Установка и запуск
-1. Клонирование репозитория
-bash
-git clone https://github.com/yourusername/electronics-network.git
-cd electronics-network
-2. Создание и активация виртуального окружения
-bash
-python -m venv venv
-source venv/bin/activate      # Linux/Mac
-venv\Scripts\activate         # Windows
-3. Установка зависимостей
-bash
-pip install -r requirements.txt
-4. Настройка базы данных PostgreSQL
-Создайте базу данных, например electronics_db.
-Скопируйте файл .env.example в .env и укажите свои параметры подключения:
+1. Клонирование репозитория:
 
-env
+git clone https://github.com/GromazekaS/ElectronicLogistic.git
+
+cd electroniclogistic
+
+2. Создание и активация виртуального окружения
+
+python -m venv venv
+
+source venv/bin/activate      # Linux/Mac
+
+venv\Scripts\activate         # Windows
+
+3. Установка зависимостей
+
+pip install -r requirements.txt
+
+4. Настройка базы данных PostgreSQL
+
+Создайте базу данных, например electronics_db.
+5. Скопируйте файл .env.example в .env и укажите свои параметры подключения:
+
 DB_NAME=electronics_db
+
 DB_USER=your_user
+
 DB_PASSWORD=your_password
+
 DB_HOST=localhost
+
 DB_PORT=5432
+
 DJANGO_SECRET_KEY=your-secret-key
-5. Применение миграций
-bash
+
+6. Применение миграций
+
 python manage.py migrate
-6. Загрузка фикстур (демонстрационные данные)
-bash
+
+7. Загрузка фикстур (демонстрационные данные)
+
 python manage.py loaddata initial_data.json
+
 Фикстура содержит 10 продуктов и 45 звеньев сети (заводы, дистрибьюторы, ритейлеры), что позволяет сразу оценить функциональность.
 
-7. Создание суперпользователя (для доступа в админку)
-bash
+8. Создание суперпользователя (для доступа в админку)
+
 python manage.py createsuperuser
-8. Запуск сервера
-bash
+
+9. Запуск сервера
+
 python manage.py runserver
+
 Админка доступна по адресу: http://127.0.0.1:8000/admin/
+
 API — http://127.0.0.1:8000/api/nodes/
 
 🧪 Тестирование
 Запуск всех тестов:
 
-bash
 python manage.py test
+
 Покрытие тестами можно оценить с помощью coverage:
 
-bash
 coverage run manage.py test
+
 coverage report
-Текущее покрытие — 98% (по модулям проекта не ниже 94%).
 
 📚 API документация
 Эндпоинты
@@ -87,8 +104,8 @@ DELETE — запрещён
 
 При получении объекта поле возвращается в виде строки с двумя знаками после запятой.
 
-Пример запроса (создание звена)
-bash
+Пример запроса (создание звена):
+
 curl -X POST http://127.0.0.1:8000/api/nodes/ \
   -H "Content-Type: application/json" \
   -u username:password \
@@ -104,6 +121,7 @@ curl -X POST http://127.0.0.1:8000/api/nodes/ \
     "currency": "RUB",
     "products": [1, 2]
   }'
+
 🛠 Возможности админ-панели
 Просмотр и редактирование звеньев и продуктов.
 
@@ -116,54 +134,57 @@ curl -X POST http://127.0.0.1:8000/api/nodes/ \
 В форме редактирования: поле debt вводится в рублях, read-only поле показывает текущую задолженность в читаемом формате.
 
 🔄 Сброс базы данных и загрузка фикстур заново
+
 Если нужно полностью очистить базу и загрузить исходные данные:
 
-Очистить таблицы (сбросить последовательности):
+Очистить таблицы (со сбросом индексов):
 
-bash
 python manage.py flush
+
 Загрузить фикстуры:
 
-bash
 python manage.py loaddata initial_data.json
-При использовании flush все последовательности (счётчики id) автоматически сбрасываются, новые объекты будут получать id начиная с 1. Если требуется ручной сброс последовательности после удаления данных (например, через SQL), можно выполнить:
 
-sql
-SELECT setval('elogistic_networknode_id_seq', 1, false);
-SELECT setval('elogistic_product_id_seq', 1, false);
 📁 Структура проекта
-text
+
 electronics-network/
+
 ├── config/               # Настройки проекта (settings.py, urls.py)
+
 ├── elogistic/            # Основное приложение
+
 │   ├── fixtures/         # Фикстуры с демо-данными
+
 │   ├── migrations/       # Миграции Django
+
 │   ├── tests/            # Тесты (разделены по модулям)
+
 │   ├── admin.py          # Настройки админки
+
 │   ├── models.py         # Модели данных
+
 │   ├── serializers.py    # DRF сериализаторы (кастомное поле RublesField)
+
 │   ├── views.py          # ViewSet с правами доступа
+
 │   └── urls.py           # Маршруты API
+
 ├── .env.example          # Пример файла переменных окружения
+
 ├── .flake8               # Конфигурация flake8
+
 ├── .gitignore
+
 ├── manage.py
+
 ├── README.md
+
 └── requirements.txt
-📈 Покрытие тестами (отчёт coverage)
-text
-Name                  Stmts   Miss  Cover
------------------------------------------
-elogistic/admin.py       62      4    94%
-elogistic/models.py      37      2    95%
-elogistic/serializers.py 35      1    97%
-... (остальные 100%)
------------------------------------------
-TOTAL                   316      5    98%
+
 ✉️ Контакты
 Проект разработан в рамках тестового задания.
-Репозиторий: https://github.com/yourusername/electronics-network
+Репозиторий: https://github.com/GromazekaS/ElectronicLogistic.git
 
-По всем вопросам обращаться: [ваш email или Telegram]
+По всем вопросам обращаться: kinst@inbox.ru, @KinstantinVRN
 
 Спасибо за внимание!
