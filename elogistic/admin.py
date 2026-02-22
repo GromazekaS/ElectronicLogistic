@@ -14,6 +14,11 @@ class NetworkNodeForm(forms.ModelForm):
         required=False,
         help_text='Введите сумму в рублях (копейки через точку)'
     )
+    debt_display = forms.CharField(
+        label='Текущая задолженность',
+        required=False,
+        widget=forms.TextInput(attrs={'readonly': 'readonly', 'style': 'background:#f0f0f0;'})
+    )
 
     class Meta:
         model = NetworkNode
@@ -22,13 +27,16 @@ class NetworkNodeForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if self.instance and self.instance.pk:
-            # Преобразуем копейки в рубли для отображения
-            self.fields['debt_rub'].initial = self.instance.debt / 100.0
+            rubles = self.instance.debt / 100.0
+            # Форматируем с разделителями тысяч и знаком рубля
+            formatted = f"{rubles:,.2f}".replace(',', ' ') + " ₽"
+            self.fields['debt_display'].initial = formatted
+            self.fields['debt_rub'].initial = rubles
         else:
+            self.fields['debt_display'].initial = '0.00 ₽'
             self.fields['debt_rub'].initial = 0
 
     def save(self, commit=True):
-        # Преобразуем рубли в копейки перед сохранением
         rub = self.cleaned_data.get('debt_rub')
         if rub is not None:
             self.instance.debt = int(rub * 100)
@@ -53,7 +61,7 @@ class NetworkNodeAdmin(admin.ModelAdmin):
             'fields': ('supplier', 'products')
         }),
         ('Финансы', {
-            'fields': ('debt_rub', 'currency')
+            'fields': ('debt_display', 'debt_rub', 'currency')
         }),
         ('Дата создания', {
             'fields': ('created_at',)
@@ -85,6 +93,13 @@ class NetworkNodeAdmin(admin.ModelAdmin):
         """Оптимизация запросов: подгружаем supplier и customers для вычисления hierarchy_role."""
         return super().get_queryset(request).select_related('supplier').prefetch_related('customers')
 
+    def debt_display(self, obj):
+        rubles = obj.debt / 100.0
+        # Форматируем с разделителями тысяч (запятая) и заменяем запятую на пробел
+        formatted = f"{rubles:,.2f}".replace(',', ' ') + " ₽"
+        return formatted
+    debt_display.short_description = "Задолженность"
+    debt_display.admin_order_field = 'debt'
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
