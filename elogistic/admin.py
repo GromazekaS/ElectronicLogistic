@@ -78,11 +78,11 @@ class NetworkNodeAdmin(admin.ModelAdmin):
     supplier_link.short_description = "Поставщик"
     supplier_link.admin_order_field = 'supplier__name'  # позволяет сортировать по имени поставщика
 
-    def debt_display(self, obj):
+    def debt_display_list(self, obj):
         """Отображает задолженность в рублях."""
         return f"{obj.debt / 100:.2f} ₽"
-    debt_display.short_description = "Задолженность"
-    debt_display.admin_order_field = 'debt'
+    debt_display_list.short_description = "Задолженность"
+    debt_display_list.admin_order_field = 'debt'
 
     def clear_debt(self, request, queryset):
         """Action для очистки задолженности."""
