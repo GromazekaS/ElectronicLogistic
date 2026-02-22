@@ -4,6 +4,7 @@ from .models import NetworkNode
 from .serializers import NetworkNodeSerializer
 from rest_framework.exceptions import PermissionDenied
 
+
 class IsActiveUser(permissions.BasePermission):
     """
     Проверяет активность пользователя. Если неактивен, выбрасывает PermissionDenied (код 403).
@@ -12,6 +13,7 @@ class IsActiveUser(permissions.BasePermission):
         if not request.user.is_active:
             raise PermissionDenied('Учетная запись не активна. Обратитесь к администратору.')
         return True
+
 
 class NetworkNodeViewSet(viewsets.ModelViewSet):
     queryset = NetworkNode.objects.all().select_related('supplier').prefetch_related('products')

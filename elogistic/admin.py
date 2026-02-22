@@ -4,6 +4,7 @@ from django.utils.html import format_html
 from django import forms
 from .models import NetworkNode, Product
 
+
 class NetworkNodeForm(forms.ModelForm):
     """
     Форма для NetworkNode, преобразующая рубли в копейки и обратно.
@@ -100,6 +101,7 @@ class NetworkNodeAdmin(admin.ModelAdmin):
         return formatted
     debt_display.short_description = "Задолженность"
     debt_display.admin_order_field = 'debt'
+
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):

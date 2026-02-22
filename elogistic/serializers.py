@@ -9,6 +9,7 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = '__all__'
 
+
 class RublesField(serializers.Field):
     """
     Поле для ввода/вывода рублей с точностью до копеек.
@@ -41,6 +42,7 @@ class RublesField(serializers.Field):
             return int(kopecks)
         except (InvalidOperation, ValueError):
             raise serializers.ValidationError('Должно быть число.')
+
 
 class NetworkNodeSerializer(serializers.ModelSerializer):
     debt = RublesField(required=False)
